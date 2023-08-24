@@ -1,4 +1,4 @@
-name: Docker
+name: Release Container and Chart
 
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
@@ -21,7 +21,7 @@ env:
 
 
 jobs:
-  build:
+  containerbuild:
 
     runs-on: ubuntu-latest
     permissions:
@@ -93,3 +93,23 @@ jobs:
         # This step uses the identity token to provision an ephemeral certificate
         # against the sigstore community Fulcio instance.
         run: echo "${TAGS}" | xargs -I {} cosign sign --yes {}@${DIGEST}
+
+  releasechart:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+      - name: Run chart-releaser
+        if: github.event_name != 'pull_request'
+        uses: helm/chart-releaser-action@v1.2.1
+        with:
+          charts_dir: deploy
+        env:
+          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
