@@ -41,3 +41,48 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+## @section Security Contexts
+
+containerSecurityContext:
+  ## @param containerSecurityContext.enabled Whether to enable the container security context
+  ##
+  enabled: true
+  ## @param containerSecurityContext.runAsNonRoot Whether to run the container as a non-root user
+  ##
+  runAsNonRoot: true
+  ## @param containerSecurityContext.privileged Whether the container is privileged
+  ##
+  privileged: false
+  ## @param containerSecurityContext.readOnlyRootFilesystem Whether the root filesystem is read-only
+  ##
+  readOnlyRootFilesystem: false
+  ## @param containerSecurityContext.allowPrivilegeEscalation Whether to allow privilege escalation
+  ##
+  allowPrivilegeEscalation: false
+  ## @extra containerSecurityContext.capabilities Capabilities to add/drop for the container
+  ## @skip containerSecurityContext.capabilities.drop
+  ##
+  capabilities:
+    drop: ["ALL"]
+  ## @extra containerSecurityContext.seccompProfile Seccomp profile for the container
+  ## @skip containerSecurityContext.seccompProfile.type
+  ##
+  seccompProfile:
+    type: "RuntimeDefault"
+
+
+podSecurityContext:
+  ## @param podSecurityContext.enabled Whether to enable the pod security context
+  ##
+  enabled: true
+  ## @param podSecurityContext.fsGroupChangePolicy Policy for changing the fsGroup
+  ##
+  fsGroupChangePolicy: OnRootMismatch
+  ## @param podSecurityContext.sysctls Sysctls for the pod
+  ##
+  sysctls: []
+  ## @param podSecurityContext.supplementalGroups Supplemental groups for the pod
+  ##
+  supplementalGroups: []
+

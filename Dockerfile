@@ -15,10 +15,10 @@ COPY . .
 
 RUN CGO_ENABLED=0 go build -o webhook -ldflags '-w -extldflags "-static"' .
 
-FROM alpine:3.19
-
-RUN apk add --no-cache ca-certificates
+FROM scratch
 
 COPY --from=build /workspace/webhook /usr/local/bin/webhook
+COPY --from=build /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
+
 
 ENTRYPOINT ["webhook"]
