@@ -334,13 +334,13 @@ func newJSONRequest(ctx context.Context, method string, endpoint *url.URL, paylo
 	return req, nil
 }
 
-func parseError(req *http.Request, resp *http.Response) error {
+func parseError(_ *http.Request, resp *http.Response) error {
 	raw, _ := io.ReadAll(resp.Body)
 
 	errAPI := &APIResponse{}
 	err := json.Unmarshal(raw, errAPI)
 	if err != nil {
-		return fmt.Errorf("Error parsing response: %w %s", err, string(raw[:]))
+		return fmt.Errorf(`error parsing response: %w %s`, err, string(raw[:]))
 	}
 
 	return fmt.Errorf("[status code: %d] %v", resp.StatusCode, errAPI)

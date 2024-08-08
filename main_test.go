@@ -5,11 +5,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/cert-manager/cert-manager/test/acme/dns"
+	dns "github.com/cert-manager/cert-manager/test/acme"
 )
 
 var (
-	zone      = os.Getenv("TEST_ZONE_NAME")
+	zone      = getEnv("TEST_ZONE_NAME", "test.")
 	dnsServer = getEnv("TEST_DNS_SERVER", "8.8.8.8:53")
 )
 
