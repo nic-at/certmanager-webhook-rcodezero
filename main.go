@@ -115,7 +115,7 @@ type APIResponse struct {
 // within a single webhook deployment**.
 // For example, `cloudflare` may be used as the name of a solver.
 func (c *RcodeZeroDNSProviderSolver) Name() string {
-	return "RcodeZero-solver"
+	return "rcodezero"
 }
 
 // Present is responsible for actually presenting the DNS record with the

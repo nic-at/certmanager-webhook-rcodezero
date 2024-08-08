@@ -23,7 +23,7 @@ func TestRunsSuite(t *testing.T) {
 		dns.SetDNSServer(dnsServer),
 		dns.SetResolvedZone(zone),
 		dns.SetAllowAmbientCredentials(false),
-		dns.SetManifestPath("testdata/RcodeZero-solver"),
+		dns.SetManifestPath("testdata/rcodezero"),
 		dns.SetStrict(true),
 		dns.SetPropagationLimit(240*time.Second),
 	)
