@@ -1,0 +1,15 @@
+name: Helm linter
+
+on: [push]
+
+jobs:
+  lint:
+    name: Lint charts
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install Helm
+      uses: azure/setup-helm@v4
+    - name: Lint
+      run: |
+        helm lint charts/*
