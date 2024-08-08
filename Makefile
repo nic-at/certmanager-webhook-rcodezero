@@ -37,7 +37,7 @@ build:
 .PHONY: rendered-manifest.yaml
 rendered-manifest.yaml:
 	helm template \
-	    --name example-webhook \
+	    --name certmanager-webhook-rcodezero \
             --set image.repository=$(IMAGE_NAME) \
             --set image.tag=$(IMAGE_TAG) \
-            deploy/example-webhook > "$(OUT)/rendered-manifest.yaml"
+            deploy/certmanager-webhook-rcodezero > "$(OUT)/rendered-manifest.yaml"

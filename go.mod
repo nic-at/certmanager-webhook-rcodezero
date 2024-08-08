@@ -1,4 +1,4 @@
-module github.com/cert-manager/webhook-example
+module github.com/blankdots/certmanager-webhook-rcodezero
 
 go 1.22.5
 
