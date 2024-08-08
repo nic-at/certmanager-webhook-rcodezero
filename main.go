@@ -345,7 +345,3 @@ func parseError(_ *http.Request, resp *http.Response) error {
 
 	return fmt.Errorf("[status code: %d] %v", resp.StatusCode, errAPI)
 }
-
-func quote(value string) string {
-	return fmt.Sprintf("\"%s\"", value)
-}

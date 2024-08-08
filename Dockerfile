@@ -20,5 +20,4 @@ FROM scratch
 COPY --from=build /workspace/webhook /usr/local/bin/webhook
 COPY --from=build /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 
-
 ENTRYPOINT ["webhook"]
