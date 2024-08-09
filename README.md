@@ -14,7 +14,7 @@ Follow the [instructions](https://cert-manager.io/docs/installation/) using the 
 
 #### Using public helm chart
 ```bash
-helm repo add certmanager-webhook-rcodezero https://nic-at.github.io/certmanager-webhook-rcodezero
+helm repo add certmanager-webhook-rcodezero https://blankdots.github.io/certmanager-webhook-rcodezero
 # Replace the groupName value with your desired domain
 helm install --namespace cert-manager certmanager-webhook-rcodezero certmanager-webhook-rcodezero/certmanager-webhook-rcodezero --set groupName=acme.yourdomain.tld
 ```
@@ -45,13 +45,13 @@ spec:
     solvers:
       - dns01:
           webhook:
-            groupName: acme.mydomain.tld
+            groupName: acme.rcodezero.at
             solverName: rcodezero
             config:
               # Reference to the Kubernetes secret containing the API key.
               apiKeySecretRef:
                 name: rcodezero-api-token
-                key: token
+                key: api-key
 
 ```
 
