@@ -7,7 +7,7 @@ go 1.22.5
 // replace github.com/cert-manager/cert-manager => github.com/cert-manager/cert-manager v1.11.1-0.20230119150913-7ebb5f515e4f
 
 require (
-	github.com/cert-manager/cert-manager v1.15.2
+	github.com/cert-manager/cert-manager v1.15.3
 	github.com/miekg/dns v1.1.61
 	k8s.io/apiextensions-apiserver v0.30.3
 	k8s.io/apimachinery v0.30.3
