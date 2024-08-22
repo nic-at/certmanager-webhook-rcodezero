@@ -3,7 +3,7 @@ name: certmanager-webhook-rcodezero
 version: 0.4.5
 description: Cert Manager Webhook for RcdoezERo.
 type: application
-home: https://github.com/blankdots/certmanager-webhook-rcodezero
+home: https://github.com/safespring-community/certmanager-webhook-rcodezero
 maintainers:
   - name: Michael Braunoeder
     email: mib@nic.at
