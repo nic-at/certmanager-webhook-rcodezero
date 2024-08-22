@@ -1,6 +1,6 @@
 # RcodeZero cert-manager ACME webhook
 
-[![Release Charts](https://github.com/blankdots/certmanager-webhook-rcodezero/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/blankdots/certmanager-webhook-rcodezero/actions/workflows/release.yml)
+[![Release Charts](https://github.com/safespring-community/certmanager-webhook-rcodezero/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/safespring-community/certmanager-webhook-rcodezero/actions/workflows/release.yml)
 
 Cert-manager webhook plugin for the  [RcodeZero](https://www.rcodezero.at) [API](https://my.rcodezero.at/openapi)
 

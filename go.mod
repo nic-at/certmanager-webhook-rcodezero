@@ -1,4 +1,4 @@
-module github.com/blankdots/certmanager-webhook-rcodezero
+module github.com/safespring-community/certmanager-webhook-rcodezero
 
 go 1.22.5
 
