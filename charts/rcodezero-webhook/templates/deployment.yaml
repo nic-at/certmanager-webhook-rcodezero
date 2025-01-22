@@ -10,9 +10,6 @@ metadata:
     heritage: {{ .Release.Service }}
 spec:
   replicas: {{ .Values.replicaCount }}
-  {{- if .Values.podSecurityContext.enabled }}
-  securityContext: {{- omit .Values.podSecurityContext "enabled" | toYaml | nindent 8 }}
-  {{- end }}
   selector:
     matchLabels:
       app: {{ include "certmanager-webhook-rcodezero.name" . }}
@@ -24,6 +21,9 @@ spec:
         release: {{ .Release.Name }}
     spec:
       serviceAccountName: {{ include "certmanager-webhook-rcodezero.fullname" . }}
+      {{- if .Values.podSecurityContext.enabled }}
+      securityContext: {{- omit .Values.podSecurityContext "enabled" | toYaml | nindent 10 }}
+      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
