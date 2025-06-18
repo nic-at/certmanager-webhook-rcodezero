@@ -203,8 +203,6 @@ func (c *RcodeZeroDNSProviderSolver) CleanUp(ch *v1alpha1.ChallengeRequest) erro
 // The stopCh can be used to handle early termination of the webhook, in cases
 // where a SIGTERM or similar signal is sent to the webhook process.
 func (c *RcodeZeroDNSProviderSolver) Initialize(kubeClientConfig *rest.Config, stopCh <-chan struct{}) error {
-	///// UNCOMMENT THE BELOW CODE TO MAKE A KUBERNETES CLIENTSET AVAILABLE TO
-	///// YOUR CUSTOM DNS PROVIDER
 
 	cl, err := kubernetes.NewForConfig(kubeClientConfig)
 	if err != nil {
@@ -213,7 +211,6 @@ func (c *RcodeZeroDNSProviderSolver) Initialize(kubeClientConfig *rest.Config, s
 
 	c.client = cl
 
-	///// END OF CODE TO MAKE KUBERNETES CLIENTSET AVAILABLE
 	return nil
 }
 
