@@ -3,7 +3,7 @@ module github.com/safespring-community/certmanager-webhook-rcodezero
 go 1.24.4
 
 require (
-	github.com/cert-manager/cert-manager v1.18.1
+	github.com/cert-manager/cert-manager v1.18.2
 	github.com/miekg/dns v1.1.66
 	k8s.io/apiextensions-apiserver v0.32.5
 	k8s.io/apimachinery v0.32.5
