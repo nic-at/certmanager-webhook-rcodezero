@@ -7,12 +7,13 @@ IMAGE_TAG := "latest"
 
 OUT := $(shell pwd)/_out
 
-KUBE_VERSION=1.25.0
+KUBE_VERSION=1.28.0
 
 $(shell mkdir -p "$(OUT)")
 export TEST_ASSET_ETCD=_test/kubebuilder/etcd
 export TEST_ASSET_KUBE_APISERVER=_test/kubebuilder/kube-apiserver
 export TEST_ASSET_KUBECTL=_test/kubebuilder/kubectl
+export TEST_ZONE=test
 
 test: _test/kubebuilder
 	$(GO) test -v .
@@ -36,7 +37,7 @@ build:
 .PHONY: rendered-manifest.yaml
 rendered-manifest.yaml:
 	helm template \
-	    --name example-webhook \
+	    --name certmanager-webhook-rcodezero \
             --set image.repository=$(IMAGE_NAME) \
             --set image.tag=$(IMAGE_TAG) \
-            deploy/example-webhook > "$(OUT)/rendered-manifest.yaml"
+            deploy/certmanager-webhook-rcodezero > "$(OUT)/rendered-manifest.yaml"

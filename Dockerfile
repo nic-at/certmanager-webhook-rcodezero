@@ -1,4 +1,4 @@
-FROM golang:1.20-alpine AS build_deps
+FROM docker.io/golang:1.24-alpine AS build_deps
 
 RUN apk add --no-cache git
 
@@ -15,10 +15,9 @@ COPY . .
 
 RUN CGO_ENABLED=0 go build -o webhook -ldflags '-w -extldflags "-static"' .
 
-FROM alpine:3.9
-
-RUN apk add --no-cache ca-certificates
+FROM scratch
 
 COPY --from=build /workspace/webhook /usr/local/bin/webhook
+COPY --from=build /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 
 ENTRYPOINT ["webhook"]

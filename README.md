@@ -1,6 +1,6 @@
 # RcodeZero cert-manager ACME webhook
 
-[![Release Charts](https://github.com/nic-at/certmanager-webhook-rcodezero/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/nic-at/certmanager-webhook-rcodezero/actions/workflows/release.yml)
+[![Release Charts](https://github.com/safespring-community/certmanager-webhook-rcodezero/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/safespring-community/certmanager-webhook-rcodezero/actions/workflows/release.yml)
 
 Cert-manager webhook plugin for the  [RcodeZero](https://www.rcodezero.at) [API](https://my.rcodezero.at/openapi)
 
@@ -14,7 +14,7 @@ Follow the [instructions](https://cert-manager.io/docs/installation/) using the 
 
 #### Using public helm chart
 ```bash
-helm repo add certmanager-webhook-rcodezero https://nic-at.github.io/certmanager-webhook-rcodezero
+helm repo add certmanager-webhook-rcodezero https://safespring-community.github.io/certmanager-webhook-rcodezero
 # Replace the groupName value with your desired domain
 helm install --namespace cert-manager certmanager-webhook-rcodezero certmanager-webhook-rcodezero/certmanager-webhook-rcodezero --set groupName=acme.yourdomain.tld
 ```
@@ -45,13 +45,13 @@ spec:
     solvers:
       - dns01:
           webhook:
-            groupName: acme.mydomain.tld
+            groupName: acme.rcodezero.at
             solverName: rcodezero
             config:
               # Reference to the Kubernetes secret containing the API key.
               apiKeySecretRef:
                 name: rcodezero-api-token
-                key: token
+                key: api-key
 
 ```
 

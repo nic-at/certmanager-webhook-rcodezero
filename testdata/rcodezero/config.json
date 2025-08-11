@@ -1,9 +1,9 @@
 {
 	"host": "https://127.0.0.1:8443",
 	"apiKeySecretRef": {
-	    "name": "secret",
-	    "key": "token"
+		"name": "secret",
+		"key": "token"
 	},
 	"ttl": 10,
 	"caBundle": "__CERT__"
-    }
+}
