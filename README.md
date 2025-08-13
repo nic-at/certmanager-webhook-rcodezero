@@ -14,7 +14,7 @@ Follow the [instructions](https://cert-manager.io/docs/installation/) using the 
 
 #### Using public helm chart
 ```bash
-helm repo add certmanager-webhook-rcodezero https://safespring-community.github.io/certmanager-webhook-rcodezero
+helm repo add certmanager-webhook-rcodezero https://blankdots.github.io/certmanager-webhook-rcodezero
 # Replace the groupName value with your desired domain
 helm install --namespace cert-manager certmanager-webhook-rcodezero certmanager-webhook-rcodezero/certmanager-webhook-rcodezero --set groupName=acme.yourdomain.tld
 ```
