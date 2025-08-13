@@ -13,7 +13,7 @@ certManager:
   serviceAccountName: cert-manager
 
 image:
-  repository: ghcr.io/safespring-community/certmanager-webhook-rcodezero
+  repository: ghcr.io/nic-at/certmanager-webhook-rcodezero
   tag: latest
   pullPolicy: IfNotPresent
 
