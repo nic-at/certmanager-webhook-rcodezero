@@ -1,4 +1,4 @@
-module github.com/safespring-community/certmanager-webhook-rcodezero
+module github.com/nic-at/certmanager-webhook-rcodezero
 
 go 1.24.4
 
