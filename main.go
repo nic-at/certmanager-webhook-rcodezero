@@ -115,7 +115,7 @@ type APIResponse struct {
 // within a single webhook deployment**.
 // For example, `cloudflare` may be used as the name of a solver.
 func (c *RcodeZeroDNSProviderSolver) Name() string {
-	return "RcodeZero-solver"
+	return "rcodezero"
 }
 
 // Present is responsible for actually presenting the DNS record with the
@@ -203,8 +203,6 @@ func (c *RcodeZeroDNSProviderSolver) CleanUp(ch *v1alpha1.ChallengeRequest) erro
 // The stopCh can be used to handle early termination of the webhook, in cases
 // where a SIGTERM or similar signal is sent to the webhook process.
 func (c *RcodeZeroDNSProviderSolver) Initialize(kubeClientConfig *rest.Config, stopCh <-chan struct{}) error {
-	///// UNCOMMENT THE BELOW CODE TO MAKE A KUBERNETES CLIENTSET AVAILABLE TO
-	///// YOUR CUSTOM DNS PROVIDER
 
 	cl, err := kubernetes.NewForConfig(kubeClientConfig)
 	if err != nil {
@@ -213,7 +211,6 @@ func (c *RcodeZeroDNSProviderSolver) Initialize(kubeClientConfig *rest.Config, s
 
 	c.client = cl
 
-	///// END OF CODE TO MAKE KUBERNETES CLIENTSET AVAILABLE
 	return nil
 }
 
@@ -334,18 +331,14 @@ func newJSONRequest(ctx context.Context, method string, endpoint *url.URL, paylo
 	return req, nil
 }
 
-func parseError(req *http.Request, resp *http.Response) error {
+func parseError(_ *http.Request, resp *http.Response) error {
 	raw, _ := io.ReadAll(resp.Body)
 
 	errAPI := &APIResponse{}
 	err := json.Unmarshal(raw, errAPI)
 	if err != nil {
-		return fmt.Errorf("Error parsing response: %w %s", err, string(raw[:]))
+		return fmt.Errorf(`error parsing response: %w %s`, err, string(raw[:]))
 	}
 
 	return fmt.Errorf("[status code: %d] %v", resp.StatusCode, errAPI)
-}
-
-func quote(value string) string {
-	return fmt.Sprintf("\"%s\"", value)
 }
