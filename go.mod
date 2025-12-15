@@ -1,6 +1,6 @@
 module github.com/nic-at/certmanager-webhook-rcodezero
 
-go 1.24.4
+go 1.25
 
 require (
 	github.com/cert-manager/cert-manager v1.18.2
