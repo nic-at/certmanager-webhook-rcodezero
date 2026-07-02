@@ -10,7 +10,7 @@ jobs:
     name: Lint charts
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v6.0.3
+    - uses: actions/checkout@v7.0.0
     - name: Install Helm
       uses: azure/setup-helm@v5
     - name: Lint
